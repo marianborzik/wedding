@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mária & Marián · 23. 05. 2026</title>
+  <meta name="description" content="Svadba Mária a Marián, 23. máj 2026, Košice" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#miesto"            data-sk="Miesto"     data-en="Venue"          data-hu="Helyszín"></a>
+        <a href="#menu"              data-sk="Menu"       data-en="Menu"           data-hu="Menü"></a>
+        <a href="#fotky"             data-sk="Fotky"      data-en="Photos"         data-hu="Fotók"></a>
+        <a href="ubytovanie.html"    data-sk="Pre ubytovaných" data-en="For overnight guests" data-hu="Szállásinformáció"></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="sk" class="active" aria-pressed="true">SK</button>
+        <span class="lang-divider">·</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <span class="lang-divider">·</span>
+        <button type="button" data-lang="hu" aria-pressed="false">HU</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow"
+         data-sk="S radosťou vás pozývame na našu svadbu"
+         data-en="With joy we invite you to our wedding"
+         data-hu="Örömmel meghívjuk Önöket az esküvőnkre"></p>
+      <h1 class="names">
+        <span>Mária</span>
+        <span class="amp">&amp;</span>
+        <span>Marián</span>
+      </h1>
+      <div class="hero-line" aria-hidden="true"></div>
+      <p class="date">23 · 05 · 2026</p>
+      <p class="city" data-sk="Košice" data-en="Košice" data-hu="Kassa"></p>
+
+      <div class="ceremony-info">
+        <p class="ceremony-label"
+           data-sk="Povieme si áno"
+           data-en="We say I do"
+           data-hu="Igent mondunk"></p>
+        <p class="ceremony-time">15:30</p>
+        <p class="ceremony-place"
+           data-sk="Dóm svätej Alžbety"
+           data-en="St. Elizabeth Cathedral"
+           data-hu="Szent Erzsébet-dóm"></p>
+      </div>
+    </section>
+
+    <section class="section venues" id="miesto">
+      <h2 data-sk="Kde sa stretneme" data-en="Where we meet" data-hu="Ahol találkozunk"></h2>
+
+      <div class="venue-grid">
+        <div class="venue-card">
+          <h3 data-sk="Obrad" data-en="Ceremony" data-hu="Szertartás"></h3>
+          <p class="venue-name">Dóm svätej Alžbety</p>
+          <p class="venue-addr">Hlavná, 040 01 Košice</p>
+          <a class="venue-link"
+             href="https://www.google.com/maps/search/?api=1&query=D%C3%B3m+sv%C3%A4tej+Al%C5%BEbety+Ko%C5%A1ice"
+             target="_blank" rel="noopener"
+             data-sk="Otvoriť v mapách →"
+             data-en="Open in maps →"
+             data-hu="Megnyitás térképen →"></a>
+        </div>
+
+        <div class="venue-card">
+          <h3 data-sk="Hostina" data-en="Reception" data-hu="Fogadás"></h3>
+          <p class="venue-name">Sála Bačíkova</p>
+          <p class="venue-addr">Bačíkova 3023, 040 01 Košice — Staré Mesto</p>
+          <a class="venue-link"
+             href="https://www.google.com/maps/search/?api=1&query=Ba%C4%8D%C3%ADkova+3023%2C+040+01+Ko%C5%A1ice"
+             target="_blank" rel="noopener"
+             data-sk="Otvoriť v mapách →"
+             data-en="Open in maps →"
+             data-hu="Megnyitás térképen →"></a>
+        </div>
+      </div>
+
+      <div class="parking-note">
+        <p data-sk="Po obrade a spoločnom fotení bude pred Dómom svätej Alžbety čakať turistický vláčik, ktorý vás odvezie k Sále Bačíkova."
+           data-en="After the ceremony and group photos, a tourist train will be waiting in front of St. Elizabeth Cathedral to take you to Sála Bačíkova."
+           data-hu="A szertartás és a közös fotózás után a Szent Erzsébet-dóm előtt egy városnéző kisvonat várja Önöket, amely a Bačíkova teremhez szállítja Önöket."></p>
+        <p data-sk="Pre tých, ktorí prídu autom: parkovať môžete priamo pri sále — parkovacích miest je dostatok. Od dómu je to navyše len pár minút peši."
+           data-en="For those arriving by car: you can park right at the reception venue — there is plenty of parking. From the cathedral it's also just a few minutes' walk."
+           data-hu="Akik autóval érkeznek: a vendéglátóhely mellett közvetlenül parkolhatnak — bőven van parkolóhely. A dómtól ráadásul csupán néhány perces séta."></p>
+      </div>
+
+      <div class="map">
+        <div id="map" data-venues="church,reception" role="img" aria-label="Mapa Košice"></div>
+        <p class="map-hint" data-sk="Kliknite na značku pre detail · pre priblíženie použite tlačidlá +/−"
+                             data-en="Click a marker for details · use +/− to zoom"
+                             data-hu="Kattintson a jelölőre a részletekért · a +/− gombokkal nagyíthat"></p>
+      </div>
+    </section>
+
+    <section class="section menu" id="menu">
+      <h2 data-sk="Menu" data-en="Menu" data-hu="Menü"></h2>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <h3 data-sk="Klasické menu" data-en="Standard menu" data-hu="Hagyományos menü"></h3>
+          <ul class="menu-list">
+            <li>
+              <span class="course" data-sk="Polievka" data-en="Soup" data-hu="Leves"></span>
+              <span class="dish"
+                    data-sk="Slepačí vývar s domácimi rezancami"
+                    data-en="Chicken broth with homemade noodles"
+                    data-hu="Tyúkhúsleves házi tésztával"></span>
+            </li>
+            <li>
+              <span class="course" data-sk="Hlavné jedlo" data-en="Main course" data-hu="Főétel"></span>
+              <span class="dish"
+                    data-sk="Pečené kuracie prsia, zemiakové pyré, dusená zelenina"
+                    data-en="Roasted chicken breast, mashed potatoes, steamed vegetables"
+                    data-hu="Sült csirkemell, burgonyapüré, párolt zöldségek"></span>
+            </li>
+            <li>
+              <span class="course" data-sk="Dezert" data-en="Dessert" data-hu="Desszert"></span>
+              <span class="dish"
+                    data-sk="Svadobná torta a výber zákuskov"
+                    data-en="Wedding cake and assorted pastries"
+                    data-hu="Esküvői torta és válogatott sütemények"></span>
+            </li>
+          </ul>
+          <p class="menu-hint"
+             data-sk="(Konečné menu bude potvrdené bližšie k dátumu.)"
+             data-en="(Final menu will be confirmed closer to the date.)"
+             data-hu="(A végleges menüt a dátumhoz közelebb erősítjük meg.)"></p>
+        </article>
+
+        <article class="menu-card">
+          <h3 data-sk="Vegánske menu" data-en="Vegan menu" data-hu="Vegán menü"></h3>
+          <ul class="menu-list">
+            <li>
+              <span class="course" data-sk="Polievka" data-en="Soup" data-hu="Leves"></span>
+              <span class="dish"
+                    data-sk="Krémová tekvicová polievka s pečenými semienkami"
+                    data-en="Creamy pumpkin soup with toasted seeds"
+                    data-hu="Krémes tökleves pirított magvakkal"></span>
+            </li>
+            <li>
+              <span class="course" data-sk="Hlavné jedlo" data-en="Main course" data-hu="Főétel"></span>
+              <span class="dish"
+                    data-sk="Pečený koreňový zeler s grilovanou zeleninou a quinoou"
+                    data-en="Roasted celeriac with grilled vegetables and quinoa"
+                    data-hu="Sült gumós zeller grillezett zöldségekkel és kínoával"></span>
+            </li>
+            <li>
+              <span class="course" data-sk="Dezert" data-en="Dessert" data-hu="Desszert"></span>
+              <span class="dish"
+                    data-sk="Vegánsky čokoládový dezert s lesným ovocím"
+                    data-en="Vegan chocolate dessert with forest berries"
+                    data-hu="Vegán csokoládédesszert erdei gyümölcsökkel"></span>
+            </li>
+          </ul>
+          <p class="menu-hint"
+             data-sk="Vegánske menu si prosím vyžiadajte pri RSVP."
+             data-en="Please request the vegan menu when you RSVP."
+             data-hu="Kérjük, a vegán menüt jelezzék a visszajelzéskor."></p>
+        </article>
+      </div>
+
+      <div class="allergens">
+        <h3 data-sk="Informácie pre alergikov"
+            data-en="Allergen information"
+            data-hu="Információk allergiásoknak"></h3>
+        <p data-sk="Pokrmy môžu obsahovať lepok, vajcia, mlieko, sóju, orechy, sezam, horčicu a sírany. Ak máte akúkoľvek potravinovú alergiu alebo intoleranciu, prosím dajte nám vedieť pri potvrdení účasti — radi pre vás pripravíme alternatívu."
+           data-en="Dishes may contain gluten, eggs, milk, soy, nuts, sesame, mustard and sulphites. If you have any food allergy or intolerance, please let us know when you RSVP — we will gladly prepare an alternative for you."
+           data-hu="Az ételek tartalmazhatnak glutént, tojást, tejet, szóját, dióféléket, szezámot, mustárt és szulfitokat. Ha bármilyen ételallergiája vagy intoleranciája van, kérjük, jelezze a visszajelzéskor — szívesen készítünk Önnek alternatívát."></p>
+        <p class="contact"
+           data-sk="V prípade otázok nás neváhajte kontaktovať."
+           data-en="If you have any questions, please do not hesitate to contact us."
+           data-hu="Bármilyen kérdés esetén bizalommal forduljanak hozzánk."></p>
+      </div>
+    </section>
+
+    <section class="section photos" id="fotky">
+      <h2 data-sk="Zdieľajte s nami fotografie"
+          data-en="Share your photos with us"
+          data-hu="Osszák meg velünk a fotókat"></h2>
+      <p class="photos-intro"
+         data-sk="Naskenujte QR kód a nahrajte fotografie z našej svadby do nášho OneDrive priečinka. Ďakujeme, že nám pomôžete zachytiť tento deň očami všetkých blízkych."
+         data-en="Scan the QR code to upload your photos from our wedding to our OneDrive folder. Thank you for helping us capture this day through the eyes of everyone we love."
+         data-hu="Olvassák be a QR-kódot, és töltsék fel az esküvőnkről készült fotókat a OneDrive mappánkba. Köszönjük, hogy segítenek megörökíteni ezt a napot szeretteink szemén keresztül."></p>
+
+      <div class="qr-wrapper">
+        <a class="qr-frame"
+           href="https://1drv.ms/f/c/95ba1e3b3c2294e6/IgASI5o3x5_CTaxV2uUkF9_KAQ9eRNXMUuCeLrU57HWjMm8?e=KjnSou"
+           target="_blank" rel="noopener"
+           aria-label="OneDrive — fotky">
+          <img src="fotky-qr-kod.png" alt="QR kód — OneDrive priečinok pre fotografie" />
+        </a>
+        <a class="photo-link"
+           href="https://1drv.ms/f/c/95ba1e3b3c2294e6/IgASI5o3x5_CTaxV2uUkF9_KAQ9eRNXMUuCeLrU57HWjMm8?e=KjnSou"
+           target="_blank" rel="noopener"
+           data-sk="alebo otvoriť odkaz priamo →"
+           data-en="or open the link directly →"
+           data-hu="vagy nyissák meg a linket közvetlenül →"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-names">Mária &amp; Marián</p>
+    <p class="footer-meta">23. 05. 2026 · <span data-sk="Košice" data-en="Košice" data-hu="Kassa"></span></p>
+    <p class="footer-thanks"
+       data-sk="Tešíme sa na vás."
+       data-en="We look forward to seeing you."
+       data-hu="Várjuk Önöket szeretettel."></p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

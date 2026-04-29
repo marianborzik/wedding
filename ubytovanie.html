@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre ubytovaných · Mária & Marián</title>
+  <meta name="description" content="Informácie o ubytovaní v Hoteli Maratón pre svadbu Mária a Marián, Košice, 23. máj 2026" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="site-nav" aria-label="Sections">
+        <a class="nav-home" href="index.html"
+           data-sk="← Domov" data-en="← Home" data-hu="← Főoldal"></a>
+        <a href="index.html#miesto"  data-sk="Miesto" data-en="Venue"  data-hu="Helyszín"></a>
+        <a href="index.html#menu"    data-sk="Menu"   data-en="Menu"   data-hu="Menü"></a>
+        <a href="index.html#fotky"   data-sk="Fotky"  data-en="Photos" data-hu="Fotók"></a>
+        <a href="ubytovanie.html" class="is-active"
+           data-sk="Pre ubytovaných" data-en="For overnight guests" data-hu="Szállásinformáció"></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="sk" class="active" aria-pressed="true">SK</button>
+        <span class="lang-divider">·</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <span class="lang-divider">·</span>
+        <button type="button" data-lang="hu" aria-pressed="false">HU</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <p class="eyebrow">Mária &amp; Marián · 23. 05. 2026</p>
+      <h1 data-sk="Pre ubytovaných"
+          data-en="For overnight guests"
+          data-hu="Szállásinformáció"></h1>
+      <p class="lead"
+         data-sk="Informácie pre hostí, ktorí u nás v Košiciach prenocujú — kde budete bývať, ako sa ubytovať a kam zájsť, kým sa ostatní zídu."
+         data-en="Information for guests staying overnight in Košice — where you'll be staying, how to check in, and where to drop in before everyone gathers."
+         data-hu="Információk a Kassán éjszakázó vendégeink számára — hol szállnak meg, hogyan jelentkezzenek be, és hová térhetnek be, mielőtt mindenki összegyűlik."></p>
+    </section>
+
+    <section class="section">
+      <h2 data-sk="Boutique Hotel Maratón"
+          data-en="Boutique Hotel Maratón"
+          data-hu="Boutique Hotel Maratón"></h2>
+
+      <div class="venue-grid">
+        <div class="venue-card">
+          <h3 data-sk="Ubytovanie" data-en="Accommodation" data-hu="Szállás"></h3>
+          <p class="venue-name">Boutique Hotel Maratón</p>
+          <p class="venue-addr">Strojárenská 2966/11A, 040 01 Košice — Staré Mesto</p>
+          <div class="phone-block">
+            <span class="phone-label"
+                  data-sk="Recepcia hotela"
+                  data-en="Hotel reception"
+                  data-hu="A hotel recepciója"></span>
+            <a class="phone-number" href="tel:+421557204141">+421 55 720 41 41</a>
+            <a class="phone-number" href="tel:+421911602093">+421 911 602 093</a>
+          </div>
+          <a class="venue-link"
+             href="https://www.google.com/maps/search/?api=1&query=Boutique+Hotel+Marat%C3%B3n+Stroj%C3%A1rensk%C3%A1+Ko%C5%A1ice"
+             target="_blank" rel="noopener"
+             data-sk="Otvoriť v mapách →"
+             data-en="Open in maps →"
+             data-hu="Megnyitás térképen →"></a>
+        </div>
+      </div>
+
+      <div class="parking-note">
+        <p data-sk="Hotel Maratón sa nachádza v centre Košíc, len pár minút pešo od Sály Bačíkova, kde sa bude konať hostina. Mapa nižšie zobrazuje obe miesta."
+           data-en="Hotel Maratón is in the centre of Košice, just a few minutes' walk from Sála Bačíkova, where the reception will be held. The map below shows both locations."
+           data-hu="A Hotel Maratón Kassa központjában található, mindössze néhány perces sétára a Bačíkova teremtől, ahol a fogadás lesz. Az alábbi térkép mindkét helyszínt megjeleníti."></p>
+      </div>
+
+      <div class="map">
+        <div id="map" data-venues="hotel,reception" role="img" aria-label="Mapa — Hotel Maratón a Sála Bačíkova"></div>
+        <p class="map-hint" data-sk="Kliknite na značku pre detail · pre priblíženie použite tlačidlá +/−"
+                             data-en="Click a marker for details · use +/− to zoom"
+                             data-hu="Kattintson a jelölőre a részletekért · a +/− gombokkal nagyíthat"></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-sk="Príchod a ubytovanie"
+          data-en="Arrival &amp; check-in"
+          data-hu="Érkezés és bejelentkezés"></h2>
+
+      <p class="section-note"
+         data-sk="Ak sme vám dopredu nepovedali, že budete ubytovaní priamo v Sále Bačíkova, vaše ubytovanie je v Hoteli Maratón."
+         data-en="If we haven't told you in advance that you'll be staying at Sála Bačíkova, your accommodation is at Hotel Maratón."
+         data-hu="Ha előzetesen nem jeleztük Önnek, hogy a Bačíkova teremben fog megszállni, a szállása a Hotel Maratónban van."></p>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <h3 data-sk="V Hoteli Maratón"
+              data-en="At Hotel Maratón"
+              data-hu="A Hotel Maratónban"></h3>
+          <p data-sk="Ubytovať sa môžete od 14:00. V závislosti od obsadenosti hotela je možný aj skorší check-in — konkrétny čas si prosím overte priamo na recepcii hotela."
+             data-en="Check-in is available from 14:00. Depending on the hotel's occupancy, an earlier check-in may be possible — please confirm directly with the hotel reception."
+             data-hu="A bejelentkezés 14:00-tól lehetséges. A hotel telítettségétől függően korábbi check-in is elérhető lehet — kérjük, ezt a hotel recepcióján egyeztesse."></p>
+        </article>
+
+        <article class="info-card">
+          <h3 data-sk="V Sále Bačíkova"
+              data-en="At Sála Bačíkova"
+              data-hu="A Bačíkova teremben"></h3>
+          <p data-sk="Pre hostí ubytovaných priamo v Sále Bačíkova je k dispozícii skorší check-in. Dostupnosť a presný čas príchodu si prosím overte na recepcii hotela."
+             data-en="Earlier check-in is available for guests staying directly at Sála Bačíkova. Please confirm availability and the exact arrival time with the hotel reception."
+             data-hu="A közvetlenül a Bačíkova teremben szállást foglaló vendégek számára korábbi bejelentkezés is elérhető. A rendelkezésre állást és a pontos érkezési időt kérjük, a hotel recepcióján egyeztesse."></p>
+        </article>
+
+        <article class="info-card highlight">
+          <h3 data-sk="Skorší príchod alebo dočasné zloženie vecí"
+              data-en="Early arrival or temporary baggage drop-off"
+              data-hu="Korábbi érkezés vagy a csomagok ideiglenes elhelyezése"></h3>
+          <p data-sk="Ak sa potrebujete zložiť alebo si oddýchnuť pred obradom, k dispozícii je veľký apartmán priamo v Hoteli Maratón. Ženích bude v apartmáne už od rána, takže ste vítaní kedykoľvek."
+             data-en="If you'd like to drop off your bags or take a moment to rest before the ceremony, there is a large apartment available right at Hotel Maratón. The groom will be there from morning — you are welcome any time."
+             data-hu="Ha szeretné letenni a csomagjait, vagy egy kicsit megpihenni a szertartás előtt, egy nagy apartman áll rendelkezésre közvetlenül a Hotel Maratónban. A vőlegény reggeltől ott lesz — bármikor szeretettel várja Önöket."></p>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section faq">
+      <h2 data-sk="Časté otázky"
+          data-en="Frequently asked questions"
+          data-hu="Gyakori kérdések"></h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-q"
+              data-sk="Aké je vybavenie izieb?"
+              data-en="What amenities are in the rooms?"
+              data-hu="Mi a szobák felszereltsége?"></h3>
+          <p class="faq-a"
+             data-sk="Izby sú vybavené ortopedickými matracmi, klimatizáciou, LCD TV so satelitným príjmom, minibarom s chladenými nápojmi, priamou telefónnou linkou, WiFi internetom, rýchlovarnou kanvicou a sušičom vlasov. Súčasťou každej izby je kúpeľňa s WC a vaňou alebo sprchovacím kútom."
+             data-en="Rooms come with orthopedic mattresses, air conditioning, LCD TV with satellite, a minibar with chilled drinks, a direct phone line, WiFi, an electric kettle and a hairdryer. Each room has its own bathroom with WC and a bathtub or shower."
+             data-hu="A szobák ortopédiai matracokkal, klímával, műholdas LCD TV-vel, hűtött italokkal feltöltött minibárral, közvetlen telefonvonallal, WiFi-vel, vízforralóval és hajszárítóval vannak felszerelve. Minden szobához saját fürdőszoba tartozik WC-vel és fürdőkáddal vagy zuhanyzóval."></p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q"
+              data-sk="Kedy a ako prebiehajú raňajky?"
+              data-en="When and how is breakfast served?"
+              data-hu="Mikor és hogyan szolgálják fel a reggelit?"></h3>
+          <p class="faq-a"
+             data-sk="Raňajky sa podávajú formou bufetových stolov v čase 07:00 – 10:00 a pre hotelových hostí sú zdarma."
+             data-en="Breakfast is served buffet-style from 07:00 to 10:00 and is complimentary for hotel guests."
+             data-hu="A reggelit svédasztalos formában szolgálják fel 07:00 és 10:00 között, és a szállóvendégek számára ingyenes."></p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q"
+              data-sk="Aký je čas odhlásenia (check-out)?"
+              data-en="What is the check-out time?"
+              data-hu="Mikor kell kijelentkezni (check-out)?"></h3>
+          <p class="faq-a"
+             data-sk="Hotel ponúka možnosť neskorého odchodu (late check-out) až do 15:00. Konkrétny čas si prosím overte na recepcii hotela."
+             data-en="The hotel offers late check-out until 15:00. Please confirm the exact time with the hotel reception."
+             data-hu="A szálloda 15:00-ig kínál késői kijelentkezést (late check-out). A pontos időt kérjük, a hotel recepcióján egyeztesse."></p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q"
+              data-sk="Kde môžem parkovať?"
+              data-en="Where can I park?"
+              data-hu="Hol parkolhatok?"></h3>
+          <p class="faq-a"
+             data-sk="Pred bránou parkoviska sa nachádza telefón, cez ktorý sa môžete spojiť s vrátnicou. Personál vám otvorí bránu a môžete zaparkovať priamo na parkovisku."
+             data-en="At the parking gate there is a phone you can use to reach the porter's lodge. The staff will open the gate for you and you can park directly inside the lot."
+             data-hu="A parkoló kapuja előtt egy telefon található, amelyen keresztül elérheti a portát. A személyzet kinyitja Önnek a kaput, és közvetlenül a parkolóban parkolhat."></p>
+        </div>
+
+      </div>
+
+      <div class="faq-followup">
+        <h3 data-sk="Nenašli ste odpoveď?"
+            data-en="Didn't find your answer?"
+            data-hu="Nem találta meg a választ?"></h3>
+        <p data-sk="Ak by ste mali akúkoľvek otázku ohľadom ubytovania alebo príchodu, neváhajte nás kontaktovať."
+           data-en="If you have any questions about accommodation or arrival, please don't hesitate to contact us."
+           data-hu="Ha bármilyen kérdése van a szállással vagy az érkezéssel kapcsolatban, kérjük, forduljon hozzánk bizalommal."></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-names">Mária &amp; Marián</p>
+    <p class="footer-meta">23. 05. 2026 · <span data-sk="Košice" data-en="Košice" data-hu="Kassa"></span></p>
+    <p class="footer-thanks"
+       data-sk="Tešíme sa na vás."
+       data-en="We look forward to seeing you."
+       data-hu="Várjuk Önöket szeretettel."></p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
