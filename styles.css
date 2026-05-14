@@ -717,6 +717,26 @@ main > .section + .section { border-top: 1px solid var(--rule); }
   color: var(--ink-soft);
 }
 
+/* ───── Gifts note ───── */
+.gifts-note {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.gifts-message {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+
 /* ───── Photos / QR ───── */
 .photos-intro {
   max-width: 640px;
